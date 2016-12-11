@@ -1,0 +1,10 @@
+
+#wrapper{
+    display: flex;
+    background-color:green;
+    width: 10%;
+}
+
+.button{
+    display: inline-block;
+}
