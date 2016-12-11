@@ -1,10 +1,96 @@
-
+body{
+    margin: 0;
+    padding: 0;
+}
+#selectionScreen{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#selectionScreen .button{
+    width: 200px;
+}
 #wrapper{
-    display: flex;
-    background-color:green;
-    width: 10%;
+    position: relative;
+    background-color: forestgreen;
+    padding: 0;
+    margin: auto auto;
+    width: 100%;
+    height: 100vh;
+}
+#gameScreen{
+    /*display: none;*/
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+.button:before{
+    content:"";
+    display: block;
+    margin-top: 100%;
+}
+.gameUnit{
+    width: 30% !important;
+}
+.button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: dimgrey;
+    border-radius: 5px;
+}
+.gameUnit:nth-child(3n){
+    border-right: 1px solid red;
+}
+.gameUnit:nth-child(3n+1){
+    border-left: 1px solid red;
+}
+.gameUnit:nth-child(-n+3){
+    border-top: 1px solid red;
+}
+.gameUnit:nth-child(n+7){
+    border-bottom: 1px solid red;
+}
+.gameUnit .circleSvg{
+    stroke-width: 10px;
+    stroke: black;
+    cx: 50%;
+    cy:50%;
+    r: 34%;
+}
+.gameUnit svg{
+    width:75%;
+}
+.gameUnit .crossSvg{
+    width: 100%;
+    height: 100%;
+}
+.crossSvg{
+    x1:20px;
+    y1:100px;
+    x2:100px;
+    y2:20px;
+    stroke: black;
+    stroke-width: 2px;
 }
 
-.button{
-    display: inline-block;
+#buttonReset, #buttonBack{
+    font-size: 40px;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 100px;
+    align-items: center;
+    background-color: dimgrey;
+    width: 30%;
+}
+#buttonReset:before, #buttonBack:before{
+    content: "";
+    display: block;
+    margin-top: 50%;
 }
