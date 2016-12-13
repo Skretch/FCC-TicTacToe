@@ -1,27 +1,72 @@
+*{
+    box-sizing: border-box;
+    user-select: none;
+    cursor: default;
+}
+html{
+    background-color: lightslategray;
+}
+svg{
+    pointer-events: none;
+}
 body{
     margin: 0;
     padding: 0;
 }
-#selectionScreen{
-    display: none;
+#endScreen{
     position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
+    color: linen;
+    top:40%;
+    transform: translate(0, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 30vh;
+    text-align: center;
+    animation: in 300ms ease-in-out forwards;
+}
+@keyframes in {
+    0%{
+        top:-10%;
+    }
+}
+#selectionScreen{
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
+    text-align: center;
+    animation: in 200ms ease-out forwards;
 }
 #selectionScreen .button{
-    width: 200px;
+    width: 40%;
+    max-width: 200px;
+}
+#selectionScreen #circle{
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+}
+#selectionScreen #cross{
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    border-right: 1px solid red;
 }
 #wrapper{
     position: relative;
-    background-color: forestgreen;
     padding: 0;
     margin: auto auto;
     width: 100%;
     height: 100vh;
 }
 #gameScreen{
-    /*display: none;*/
+    display: none;
     position: absolute;
     top:50%;
     left:50%;
@@ -29,6 +74,8 @@ body{
     text-align: center;
     max-width: 700px;
     width: 100%;
+    max-height: 95vh !important;
+    animation: in 200ms ease-out forwards;
 }
 .button:before{
     content:"";
@@ -42,7 +89,7 @@ body{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: dimgrey;
+    background-color: lightsteelblue;
     border-radius: 5px;
 }
 .gameUnit:nth-child(3n){
@@ -79,15 +126,29 @@ body{
     stroke: black;
     stroke-width: 2px;
 }
-
 #buttonReset, #buttonBack{
     font-size: 40px;
     display: inline-flex;
     justify-content: center;
     margin-top: 100px;
     align-items: center;
-    background-color: dimgrey;
     width: 30%;
+}
+@media (max-width: 575px){
+    #buttonReset, #buttonBack{
+        font-size: 7vw;
+        margin-top: 15vw;
+    }
+}
+#buttonReset{
+    border-top: 1px solid red;
+    border-left: 1px solid red;
+    border-bottom: 1px solid red;
+}
+#buttonBack{
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    border-right: 1px solid red;
 }
 #buttonReset:before, #buttonBack:before{
     content: "";
