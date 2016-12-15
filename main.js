@@ -152,6 +152,8 @@ function computerMove(){
 function findMove(){
     var nextTile;
     nextTile = node2(_.cloneDeep(mainBoard), 1,0);
+    console.log(temp);
+    temp=0;
     return nextTile;
 }
 
@@ -178,47 +180,52 @@ function node(board, moveTracker,topTracker){
     }
     return sortedNodes[0][0];
 }
-
+var temp = 0;
 var finalMove = [];
 function node2(board, player, depth){
     if(hasWinner(board) !== 0 || getPossibleMoves(board).length <= 0){
-        console.log("Depth ----- " + depth + " ----- exit with value ------ " + hasWinner(board) + " --------");
+        // console.log("Depth ----- " + depth + " ----- exit with value ------ " + hasWinner(board) + " --------");
+        // console.log("This should always be empty: " + getPossibleMoves(board));
         return hasWinner(board);
     }
     var scores = [];
     var moves = [];
     var possibleMoves = getPossibleMoves(board);
     for(var i = 0; i < possibleMoves.length; i++){
-        var pBoard = _.cloneDeep(move(board, possibleMoves[i], player));
-        scores.push(node2(pBoard, -player, depth+1));
+        // console.log(player + " MOVES TO:  " + possibleMoves[i])
+        scores.push(node2(move(_.cloneDeep(board), possibleMoves[i], player), player, depth+1));
         moves.push(possibleMoves[i]);
     }
+    // console.log(board);
     if(depth === 0){
         max_score_index = scores.indexOf(_.max(scores));
         console.log(depth + " exiting with: " + max_score_index);
+        // console.log("LAST------------------------------------ " + depth +" ------------------------------------LAST");
+        // console.log(board);
+        // console.log("Passing up: " + moves[max_score_index])
         return moves[max_score_index];
     }
     if(player === 1){
         max_score_index = scores.indexOf(_.max(scores));
         console.log("MAX------------------------------------ " + depth +" ------------------------------------MAX");
-        console.log("Largest possible is: " + scores[max_score_index]);
-        console.log("Max score is " + _.max(scores));
-        console.log("Max score index is " + scores.indexOf(_.max(scores)));
-        console.log("Passing up -----VALUE----: " + scores[max_score_index]);
-        console.log(scores);
-        console.log(moves);
-        console.log("Possible Moves : \n" + possibleMoves);
-        return scores[max_score_index];
+        // console.log("Largest possible is: " + scores[max_score_index]);
+        // console.log("Max score is " + _.max(scores));
+        // console.log("Max score index is " + scores.indexOf(_.max(scores)));
+        // console.log("Passing up -----VALUE----: " + scores[max_score_index]);
+        // console.log(scores);
+        // console.log(moves);
+        // console.log("Possible Moves : " + possibleMoves);
+        return scores[max_score_index]  - 1;
     }else{
         min_score_index = scores.indexOf(_.min(scores));
         console.log("MIN------------------------------------ " + depth +" ------------------------------------MIN");
-        console.log("Min score is: " + _.min(scores));
-        console.log("Min score index : " + scores.indexOf(_.min(scores)));
-        console.log("Passing up -----VALUE----: " + scores[min_score_index]);
-        console.log(scores);
-        console.log(moves);
-        console.log("Possible Moves : \n" + possibleMoves);
-        return scores[min_score_index];
+        // console.log("Min score is: " + _.min(scores));
+        // console.log("Min score index : " + scores.indexOf(_.min(scores)));
+        // console.log("Passing up -----VALUE----: " + scores[min_score_index]);
+        // console.log(scores);
+        // console.log(moves);
+        // console.log("Possible Moves : " + possibleMoves);
+        return scores[min_score_index]  - 1;
     }
 
 }
