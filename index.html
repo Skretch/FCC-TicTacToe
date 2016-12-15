@@ -8,11 +8,25 @@
     <body>
         <div id="wrapper">
             <div id="selectionScreen" class="screen">
-                <div id="circle" class="button">Circle</div>
-                <div id="cross" class="button">Cross</div>
+                <div id="circle" class="button">
+                    <svg version="1.1\"viewBox="0 0 500 500">
+                        <circle class="circleSvg" fill="none"/>
+                    </svg>
+                </div>
+                <div id="cross" class="button">
+                    <svg version="1.1"viewBox="0 0 500 500">
+                        <line x1="20%" y1="80%" x2="80%" y2="20%"
+                            stroke-width="10" stroke="black"/>
+                        <line x1="20%" y1="20%" x2="80%" y2="80%"
+                            stroke-width="10" stroke="black"/>
+                    </svg>
+                </div>
             </div>
             <div id="gameScreen" class="screen">
                 <div id="gameTiles">
+                    <div id="button0" class="button gameUnit">
+
+                    </div>
                     <div id="button1" class="button gameUnit">
 
                     </div>
@@ -37,9 +51,6 @@
                     <div id="button8" class="button gameUnit">
 
                     </div>
-                    <div id="button9" class="button gameUnit">
-
-                    </div>
                 </div>
                 <div id="buttonReset" class="button">Reset</div>
                 <div id="buttonBack" class="button">Back</div>
@@ -47,6 +58,7 @@
             <div id="endScreen" class="screen">
             </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js"></script>
         <script type="text/javascript" src="main.js">
         </script>
     </body>
